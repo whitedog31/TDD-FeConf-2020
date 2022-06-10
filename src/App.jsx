@@ -1,17 +1,19 @@
-import React from "react";
-import { useEffect } from "react/cjs/react.production.min";
-import ListContainer from "./ListContainer";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from 'react';
 
-import tasks from "../fixtures/tasks";
+import { useDispatch } from 'react-redux';
 
-import { setTasks } from "./actions";
+import ListContainer from './ListContainer';
+
+import {
+  loadTasks,
+} from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
-
+  // TODO: 초기실행
+  // store tasks에 데이터 넣기 => dispatch 이용
   useEffect(() => {
-    dispatch(setTasks(tasks));
+    dispatch(loadTasks());
   }, []);
 
   return (

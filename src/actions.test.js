@@ -1,16 +1,22 @@
-import configureStore from "redux-mock-store";
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-import thunk from "redux-thunk";
+import {
+  setTasks,
+  loadTasks,
+} from './actions';
 
-import { fetchTasks } from "./services/api";
-
-import { loadTasks } from "./actions";
-
-jest.mock("./services/api");
+jest.mock('./services/api');
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-describe("loadTasks", () => {
-  it("", () => {});
+test('loadTasks', async () => {
+  const store = mockStore({});
+
+  await store.dispatch(loadTasks());
+
+  const actions = store.getActions();
+
+  expect(actions[0]).toEqual(setTasks([]));
 });
