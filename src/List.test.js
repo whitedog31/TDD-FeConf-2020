@@ -13,4 +13,11 @@ describe("List", () => {
     expect(container).toHaveTextContent("아무 일도 하기 싫다");
     expect(container).toHaveTextContent("건물 매입");
   });
+
+  context("without tasks", () => {
+    const tasks = [];
+    const { container } = render(<List tasks={tasks} />);
+
+    expect(container).toHaveTextContent("할 말이 없어요!");
+  });
 });
